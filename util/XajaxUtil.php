@@ -19,6 +19,7 @@ class XajaxUtil {
         $this->xajax->register(XAJAX_FUNCTION, 'menuPaciente');
         $this->xajax->register(XAJAX_FUNCTION, 'mostrarPacientes');
         $this->xajax->register(XAJAX_FUNCTION, 'novoPaciente');
+        $this->xajax->register(XAJAX_FUNCTION, 'apagarPaciente');
         //registra metodos
         $login = new LoginController();
         $this->xajax->register(XAJAX_FUNCTION, array("logar", $login, "logar"));//metodo

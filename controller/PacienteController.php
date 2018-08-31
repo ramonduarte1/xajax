@@ -25,10 +25,13 @@ class PacienteController {
         $paciente->setNome($form['nome']);
         $paciente->setCpf($form['cpf']);
         $result = $paciente->salvar();
-        
+
         $this->objResponse->alert($result);
         return $this->objResponse;
     }
 
+
+
 }
+
 //teste

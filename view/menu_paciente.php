@@ -5,6 +5,7 @@ function menuPaciente() {
             pesquisa por nome:<input id="nome" name="nome" type="text" size="10"> <br>
             <input type="submit" value="buscar" onclick="xajax_mostrarPacientes()">
             <input type="submit" value="novo" onclick = "xajax_novoPaciente()">
+            <input type="submit" value="apagar" onclick = "xajax_apagarPaciente()">
              <div id="opcao_paciente"></div>';
 
     $obj_response = new xajaxResponse();
@@ -67,6 +68,36 @@ function novoPaciente() {
                </table>
              </form>
 HTML;
+
+    $obj_response = new xajaxResponse();
+
+    $obj_response->assign("opcao_paciente", "innerHTML", $html);
+
+    return $obj_response;
+}
+
+function apagarPaciente($form) {
+        $p = new Paciente();
+    $pacientes = $p->retornaPacientes();
+    // var_dump($pacientes);
+
+
+    $html .= " <h3>lista Paciente</h3>
+                  <table>
+                  <tr>
+                        <th>id</th>
+                        <th>nome</th>
+                        <th>cpf</th>
+                  </tr>";
+    foreach ($pacientes as $paciente) {
+        $html .= "<tr>
+                      <td>" . $paciente['id'] . "</td>
+                      <td>" . $paciente['nome'] . "</td>
+                      <td>" . $paciente['cpf'] . "</td>
+                      <td><input type='checkbox' name='pacientes[]' value=" . $paciente['id'] . "></td>
+                  </tr>";
+    }
+    $html .= "<tr> <td><input type='button' value='apagar'></td></tr></table>";
 
     $obj_response = new xajaxResponse();
 
